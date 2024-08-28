@@ -4,13 +4,20 @@ const Tour = ({ tour, removeTour }) => {
   const [showMore, setShowMore] = useState(false);
   const { id, name, info, image, price } = tour;
 
+  const words = info.split(' ');
+
+  const textToShow = showMore ? info : words.slice(0, 200).join(' ') + (words.length > 200 ? '...' : '');
+
   return (
     <div className="tour">
       <img src={image} alt={name} />
       <h2>{name}</h2>
       <p id={`tour-item-para-${id}`}>
-        {showMore ? info : `${info.substring(0, 200)}...`}
-        <button onClick={() => setShowMore(!showMore)}>
+        {textToShow}
+        <button
+          id={`see-more-${id}`}
+          onClick={() => setShowMore(!showMore)}
+        >
           {showMore ? 'See less' : 'Show more'}
         </button>
       </p>
