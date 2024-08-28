@@ -5,7 +5,7 @@ const Tour = ({ tour, removeTour }) => {
   const { id, name, info, image, price } = tour;
 
   // Truncate the text to 200 words or 250 characters, whichever is shorter
-  const truncatedText = info.length > 250 ? info.slice(0, 250) + '...' : info;
+  const truncatedText = info.length > 200 ? info.slice(0, 200) + '...' : info;
 
   // Determine which text to show based on showMore state
   const textToShow = showMore ? info : truncatedText;
